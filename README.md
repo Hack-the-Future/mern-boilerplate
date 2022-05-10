@@ -18,3 +18,25 @@ The `completed` branch contains the code to a fully-functioning, dockerized, web
 ## Setup
 
 ## Technologies
+
+### Frontend
+
+- [React.js](https://reactjs.org/)
+  - [Create-react-app](https://create-react-app.dev/)
+- [MUI](https://mui.com)
+- [React-Redux](https://react-redux.js.org/)
+  - [Redux-toolkit](https://redux-toolkit.js.org/)
+- [Axios](https://axios-http.com/)
+
+### Backend
+
+- [MongoDB](https://www.mongodb.com/)
+  - [Mongoose](https://mongoosejs.com/)
+- [Express.js](https://expressjs.com/)
+
+### Others
+
+- [Babel](https://babeljs.io/) (Transpiler)
+- [Eslint](https://eslint.org/) (Linter)
+
+## Coding Conventions
