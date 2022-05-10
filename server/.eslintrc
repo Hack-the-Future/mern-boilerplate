@@ -2,13 +2,13 @@
   "parserOptions": {
     "parser": "@babel/eslint-parser",
     "requireConfigFile": false,
-    // "sourceType": "module",
+    "sourceType": "module",
     "ecmaVersion": "latest"
   },
   "extends": ["airbnb-base", "plugin:prettier/recommended"],
   "plugins": ["@babel", "prettier"],
   "rules": {
-    "no-console": 0,
+    "no-console": 1,
     "no-underscore-dangle": 0,
     "no-unused-vars": 1,
     "prettier/prettier": [
