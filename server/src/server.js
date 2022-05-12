@@ -3,7 +3,8 @@ import express from 'express'
 import cors from 'cors'
 import bodyParser from 'body-parser'
 import cookieParser from 'cookie-parser'
-import mongoConnect from 'store'
+import mongoConnect from 'config/db'
+import rootRouter from 'routes'
 
 const app = express()
 const port = process.env.PORT || 8080
@@ -11,7 +12,7 @@ const port = process.env.PORT || 8080
 // Middlewares
 app.use(
   cors({
-    origin: ['http://localhost:3000'],
+    origin: [process.env.CLIENT_URL],
     optionsSuccessStatus: 200,
     credentials: true,
   })
@@ -19,6 +20,9 @@ app.use(
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser())
+
+// set up api route
+app.use('/api', rootRouter)
 
 mongoConnect().then(async () => {
   app.listen(port, () => {

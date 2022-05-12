@@ -1,5 +1,5 @@
 import { createTheme, CssBaseline, ThemeProvider } from '@mui/material'
-import Root from 'pages/Root'
+import Root from 'views/Root'
 import { Provider } from 'react-redux'
 import ReduxStore from 'store'
 

@@ -1,8 +1,8 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Container } from '@mui/material'
-import Main from 'pages/Main'
-import Axios from 'pages/Tutorial/Axios'
-import Redux from 'pages/Tutorial/Redux'
+import Main from 'views/Main'
+import Axios from 'views/Tutorial/Axios'
+import Redux from 'views/Tutorial/Redux'
 
 export default function Root() {
   return (

@@ -1,6 +1,6 @@
 import mongoose from 'mongoose'
 
-const setup = () =>
+const connectMongo = () =>
   new Promise((res, rej) => {
     const mongoURL = process.env.DATABASE_URL
 
@@ -21,4 +21,4 @@ const setup = () =>
     })
   })
 
-export default setup
+export default connectMongo
