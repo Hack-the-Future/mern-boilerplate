@@ -2,14 +2,14 @@ import mongoose from 'mongoose'
 
 const connectMongo = () =>
   new Promise((res, rej) => {
-    const mongoURL = process.env.DATABASE_URL
+    const mongoURI = process.env.MONGO_URI
 
-    if (!mongoURL) {
+    if (!mongoURI) {
       console.log('missing DATABASE_URL env')
       return
     }
 
-    mongoose.connect(mongoURL).catch((err) => {
+    mongoose.connect(mongoURI).catch((err) => {
       console.error(err)
       rej(err)
     })
