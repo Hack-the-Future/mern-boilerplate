@@ -15,7 +15,66 @@ The `completed` branch contains the code to a fully-functioning, dockerized, web
 - Node.js (Recommended to install through [NVM](https://github.com/nvm-sh/nvm))
 - MongoDB ([Community edition](https://www.mongodb.com/docs/manual/installation/))
 
+### Recommended VsCode extensions
+
+- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+
 ## Setup
+
+Install all dependencies for `client/` and `server/`.
+
+In two separate terminals:
+
+```
+cd client
+npm install
+```
+
+```
+cd server
+npm install
+```
+
+Create `.env` files in both `client/` and `server/`
+
+```
+root/
+  client/
+    .env
+  server/
+    .env
+```
+
+`client/.env`
+
+```
+NODE_ENV=development
+REACT_APP_SERVER_URL=http://localhost:8080
+```
+
+`server/.env`
+
+```
+NODE_ENV=development
+PORT=8080
+MONGO_URI=mongodb://localhost:27017/mern-db
+CLIENT_URL=http://localhost:3000
+```
+
+### Running client and server
+
+In two separate terminals:
+
+```
+cd client
+npm start
+```
+
+```
+cd server
+npm start
+```
 
 ## Technologies
 
