@@ -1,6 +1,6 @@
 import passport from 'passport'
 import jwt from 'jsonwebtoken'
-import type { CookieOptions } from 'express'
+import type { CookieOptions, NextFunction, Request, Response } from 'express'
 import ms from 'ms'
 
 const dev = process.env.NODE_ENV !== 'production'
@@ -11,7 +11,6 @@ export const COOKIE_OPTIONS: CookieOptions = {
   secure: !dev,
   signed: true,
   maxAge: ms(process.env.REFRESH_TOKEN_EXPIRY || '30d'),
-  sameSite: 'none',
 }
 
 export const getToken = (user: SignedUser) =>
@@ -24,6 +23,9 @@ export const getRefreshToken = (user: SignedUser) =>
     expiresIn: process.env.REFRESH_TOKEN_EXPIRY || '30d',
   })
 
-export const verifyUser = passport.authenticate('jwt', {
-  session: false,
-})
+export const verifyUser = (req: Request, res: Response, next: NextFunction) => {
+  const { signedCookies = {} } = req
+  const { refreshToken } = signedCookies
+  if (!refreshToken) res.status(401).send('Unauthorized')
+  else passport.authenticate('jwt', { session: false })(req, res, next)
+}

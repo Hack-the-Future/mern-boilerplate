@@ -3,6 +3,8 @@ import { Strategy, ExtractJwt } from 'passport-jwt'
 import UserAuth from 'models/userAuth.model'
 import to from 'await-to-js'
 
+// https://github.com/jwalton/passport-api-docs
+
 export default () => {
   passport.use(
     new Strategy(

@@ -34,7 +34,7 @@ export const login = async (
     return res.status(500).json({ error: new Error('unable to find user') })
 
   res.cookie('refreshToken', refreshToken, COOKIE_OPTIONS)
-  return res.json({ token })
+  return res.json({ user: userObj, token })
 }
 
 export const register = async (
@@ -48,7 +48,6 @@ export const register = async (
     password,
     async (error, user: IUserAuth) => {
       if (error) {
-        console.log(error)
         return res.status(500).send({ error })
       }
 
@@ -59,18 +58,23 @@ export const register = async (
       const [err] = await to(user.save())
       if (err) {
         console.log(err)
+
         return res.status(500).send({ error: err })
       }
 
       res.cookie('refreshToken', refreshToken, COOKIE_OPTIONS)
 
-      return res.json({ token })
+      return res.json({ user, token })
     }
   )
 }
 
-export const getUser = (req: Request<Empty, Empty, IUserAuth>, res: Response) =>
-  res.send({ user: req.user })
+export const getUser = (
+  req: Request<Empty, Empty, IUserAuth>,
+  res: Response
+) => {
+  return res.send({ user: req.user })
+}
 
 export const refreshToken = async (
   req: Request<Empty, Empty, IUserAuth>,
@@ -80,7 +84,6 @@ export const refreshToken = async (
   const { refreshToken: rToken } = signedCookies
 
   if (!rToken) return res.status(401).send('Unauthorized')
-
   try {
     const { _id: userId } = jwt.verify(
       rToken,
@@ -113,16 +116,11 @@ export const logout = async (
   const { signedCookies = {}, user } = req
   const { refreshToken: rToken } = signedCookies
 
-  const [error, userObj] = await to(
-    UserAuth.findById(user?._id).exec() as Promise<IUserAuth>
-  )
-  if (error) return res.status(500).json({ error })
-  if (!userObj) return res.status(401).send('Unauthorized')
+  if (!user) return res.status(401).send('Unauthorized')
 
-  const tokenIdx = userObj.refreshTokens.indexOf(rToken)
-  if (tokenIdx !== -1) userObj.refreshTokens.splice(tokenIdx, 1)
-
-  const [err] = await to(userObj.save())
+  const tokenIdx = user.refreshTokens.indexOf(rToken)
+  if (tokenIdx !== -1) user.refreshTokens.splice(tokenIdx, 1)
+  const [err] = await to(user.save())
   if (err) return res.status(500).json({ error: err })
 
   res.clearCookie('refreshToken', COOKIE_OPTIONS)
