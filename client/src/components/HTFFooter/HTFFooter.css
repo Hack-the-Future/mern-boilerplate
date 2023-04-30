@@ -1,0 +1,126 @@
+/* The styling for each section of the footer */
+.htf-footer-box-one {
+    display: inline-block;
+    text-align: left;
+    vertical-align: top;
+    margin-left: 3vw;
+}
+
+/* The styling for each section of the footer, specific to certain elements so that it can be edited by screen size */
+.htf-footer-box-two {
+    display: inline-block;
+    text-align: left;
+    vertical-align: top;
+    margin-left: 3vw;
+}
+
+/* Styling for the logo */
+.htf-footer-logo {
+    display: inline-block;
+    height: auto;
+    margin-left: 3vw;
+    text-align: left;
+    vertical-align: middle;
+    width: 36px;
+    padding: 10px 0 0 0;
+}
+
+/* Styling for the footer overall */
+.htf-footer-main {
+    /*
+    OPTIONALLY, add an upper border by uncommenting this.
+    Change the color as needed.
+    */
+    /*
+    border-top-color: #2189cc;
+    border-top-style: solid;
+    border-top-width: 0.375em;
+    */
+
+    /* OPTIONALLY, change the background color below. */
+    background-color: black;
+
+    bottom: 0;
+    position: relative;
+    text-align: left;
+    width: 100%;
+    height: auto;
+    font-size: 10pt;
+}
+
+/* Styling for any text present in the footer */
+.htf-footer-text-one {
+    color: #ffffff;
+    font-family: -apple-system,
+        BlinkMacSystemFont,
+        "Roboto",
+        "Segoe UI",
+        "Helvetica Neue",
+        "Lucida Grande",
+        Arial,
+        sans-serif;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: 10px 0 10px 0;
+}
+
+/* Styling for any text present in the footer, specific to certain elements so that it can be edited by screen size */
+.htf-footer-text-two {
+    color: #ffffff;
+    font-family: -apple-system,
+        BlinkMacSystemFont,
+        "Roboto",
+        "Segoe UI",
+        "Helvetica Neue",
+        "Lucida Grande",
+        Arial,
+        sans-serif;
+    margin-bottom: 0;
+    margin-top: 0;
+    padding: 10px 0 10px 0;
+}
+
+/* Styling for hovering over the social media buttons */
+.htf-social-button-hover:hover {
+    opacity: 50%;
+}
+
+/* Styling for hovering over a text link */
+.htf-link:hover {
+    opacity: 50%;
+    text-decoration: none;
+}
+
+/* Styling for text links to make them white instead of blue */
+.htf-link {
+    color: #1FA710;
+}
+
+/* Styling for the contact links */
+.htf-footer-links {
+    float: right;
+    display: block;
+    margin: 0 3vw 0 0;
+    text-align: left;
+    height: fit-content;
+}
+
+/* 
+Adjust certain properties to allow elements to stack when screen size is small.
+Allows it to look better on mobile as well.
+*/
+@media only screen and (max-width: 765px) {
+    .htf-footer-links {
+        float: none;
+        display: inline-block;
+        margin: 0 3vw 0 3vw;
+    }
+
+    .htf-footer-box-two {
+        margin-left: 0;
+    }
+
+    .htf-footer-text-two {
+        padding: 0 0 10px 0;
+    }
+}

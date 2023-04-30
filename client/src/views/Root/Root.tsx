@@ -7,6 +7,8 @@ import { Auth, Login, Me, Register } from 'views/Tutorial/Auth'
 import Axios from 'views/Tutorial/Axios'
 import Redux from 'views/Tutorial/Redux'
 
+import NotFound from 'components/NotFound/NotFound'
+
 export default function Root() {
   return (
     <BrowserRouter>
@@ -21,7 +23,7 @@ export default function Root() {
           <Route path="me" element={<Me />} />
         </Route>
 
-        <Route path="*" element={<Container sx={{ p: 5 }}>404</Container>} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   )
